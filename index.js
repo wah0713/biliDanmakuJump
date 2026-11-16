@@ -23,9 +23,10 @@
     $('.bpx-player-row-dm-wrap').on('click', '.bili-danmaku-x-show', function () {
         const str = $(this)[0].textContent
         const time = str.match(/\d+/g)
-        if (!time) {
+        if (!time || time.length < 2) {
             return
         }
+
         const seconds = Number(time.at(-1) ?? 0) + Number(time.at(-2) ?? 0) * 60 + Number(time.at(-3) ?? 0) * `3600`
         video.currentTime = seconds
     })
